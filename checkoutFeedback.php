@@ -63,7 +63,11 @@ class CheckoutFeedback extends Module
                     $output .= $this->displayError($this->l('Invalid Configuration Value.'));
             else
             {
-                Configuration.updateValue('MYMODULE_NAME', $my_module_name);
+                Configuration.updateValue('question_1', $my_module_name);
+                Configuration.updateValue('question_2', $my_module_name);
+                Configuration.updateValue('question_3', $my_module_name);
+                Configuration.updateValue('question_4', $my_module_name);
+                Configuration.updateValue('question_5', $my_module_name);
                 $output .= $this->displayConfirmation($this->l('Settings updated'));
             }
         }
@@ -83,13 +87,49 @@ class CheckoutFeedback extends Module
             'input' => array(
                 array(
                     'type' => 'text',
-                    'label' => $this->l('Configuration value'),
-                    'name' => 'MYMODULE_NAME',
+                    'label' => $this->l('Question 1'),
+                    'name' => 'question_1',
                     'size' => 20,
-                    'required' => true
+                    'required' => false
                 )
             ),
-            'submit' => array(
+            'input' => array(
+                array(
+                    'type' => 'text',
+                    'label' => $this->l('Question 2'),
+                    'name' => 'question_2',
+                    'size' => 20,
+                    'required' => false
+                )
+            ),
+            'input' => array(
+                array(
+                    'type' => 'text',
+                    'label' => $this->l('Question 3'),
+                    'name' => 'question_3',
+                    'size' => 20,
+                    'required' => false
+                )
+            ),
+            'input' => array(
+                array(
+                    'type' => 'text',
+                    'label' => $this->l('Question 4'),
+                    'name' => 'question_4',
+                    'size' => 20,
+                    'required' => false
+                )
+            ),
+            'input' => array(
+                array(
+                    'type' => 'text',
+                    'label' => $this->l('Question 5'),
+                    'name' => 'question_5',
+                    'size' => 20,
+                    'required' => false
+                )
+            ),
+         'submit' => array(
                 'title' => $this->l('Save'),
                 'class' => 'button'
             )
@@ -126,7 +166,7 @@ class CheckoutFeedback extends Module
         );
 
         // Load current value
-        $helper->fields_value['MYMODULE_NAME'] = Configuration::get('MYMODULE_NAME');
+        $helper->fields_value['question_1'] = Configuration::get('question_1');
 
         return $helper->generateForm($fields_form);
     }
